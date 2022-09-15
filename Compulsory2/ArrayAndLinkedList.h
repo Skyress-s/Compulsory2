@@ -18,14 +18,16 @@ class ArrayAndLinkedList
 {
 public:
     int staticArray[40]{};
-    
+
+    // array functions
     void PopulateArrayRand(int min, int max);
     void TransferDataToLinkedList();
     void PrintArray();
-    void PrintLinkedList();
-
+    
     // linked list functions
+    void PrintLinkedList();
     void AddToEnd(int data);
+    void AddToHead(int data);
     int Size(){ return _size; }
     Node* At(int index);
     

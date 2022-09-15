@@ -65,6 +65,21 @@ void ArrayAndLinkedList::AddToEnd(int data) {
     _size++;
 }
 
+void ArrayAndLinkedList::AddToHead(int data)
+{
+    Node* newNode = new Node(data);
+    // if size zero
+    if (_size == 0) {
+        tail = head = newNode;
+        _size++;
+        return;
+    }
+
+    newNode->next = head;
+
+    head = newNode;
+}
+
 /**
  * \brief 
  * \param index finds and returns element of index, return nullptr if out of range

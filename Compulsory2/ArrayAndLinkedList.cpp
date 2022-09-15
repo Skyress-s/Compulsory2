@@ -76,7 +76,9 @@ void ArrayAndLinkedList::AddToHead(int data)
     }
 
     newNode->next = head;
-
+    head->prev = newNode;
+    _size++;
+    
     head = newNode;
 }
 

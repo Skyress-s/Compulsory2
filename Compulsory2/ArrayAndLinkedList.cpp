@@ -99,3 +99,69 @@ Node* ArrayAndLinkedList::At(int index) {
     }
     return searchNode;
 }
+
+
+void ArrayAndLinkedList::PopBack()
+{
+
+}
+
+void ArrayAndLinkedList::SortList(ArrayAndLinkedList linkedlist,int begin, int end)
+{
+    if (begin >= end)
+        return;
+
+    int middle = (begin + (end - begin)) / 2;
+   
+
+    SortList(linkedlist,  begin,  middle);
+    SortList(linkedlist,  middle+1,  end);
+    MergeList(linkedlist, begin, middle, end);
+}
+
+
+int& ArrayAndLinkedList::operator[](const int index)
+{
+    Node* current_node = this->head;
+    int count{ 0 };
+    while (current_node != nullptr) {
+        if (count == index)
+            return current_node->data;
+
+        current_node = current_node->next;
+        count++;
+    }
+}
+
+
+
+
+
+void ArrayAndLinkedList::MergeList(ArrayAndLinkedList linkedlist, int start, int middle, int end)
+{
+    const int size_sub_list_1{ middle+1- start};
+    const int size_sub_list_2{ middle - start};
+
+    ArrayAndLinkedList* linked_list_1 = new ArrayAndLinkedList[size_sub_list_1];
+    ArrayAndLinkedList* linked_list_2 = new ArrayAndLinkedList[size_sub_list_2];
+
+    //copy data from the main linked list to the sublists
+    for(int i{}; i < size_sub_list_1; i++) {
+        linked_list_1[i] = linked_list_1[start+i]; //copying starts from "start" for the first sublink
+    }
+    for(int i{}; i < size_sub_list_2; i++ ) {
+        linked_list_2[i] = linked_list_2[(middle+1) + i];
+    }
+
+    int start_index_list_1{ 0 };
+    int start_index_list_2{ 0 };
+    int start_index_merged_list{ 0 };
+
+    do {
+        if (linked_list_1->At(start_index_list_1) < linked_list_2->At(start_index_list_2)) {
+            linkedlist[start_index_merged_list] = linked_list_1->At(start_index_list_1);
+        }
+
+    } while (start_index_list_1 < size_sub_list_1
+        && start_index_list_2 < size_sub_list_2);
+}

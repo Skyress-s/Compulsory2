@@ -39,6 +39,7 @@ void ArrayAndLinkedList::PrintLinkedList()
     }
     std::cout << std::endl;
     std::cout << "Printing linked list from tail:" << std::endl;
+    count = 0;
     Node* t = tail;   
     while (t != NULL) {
         std::cout << t->data << " ";
@@ -108,7 +109,49 @@ int ArrayAndLinkedList::ReadFrom(int index, Node* N)
 
 void ArrayAndLinkedList::PopBack()
 {
+    
+}
 
+void ArrayAndLinkedList::RemoveAt(int index) {
+    // bail checks
+    if (index < 0 || index > _size - 1) {
+        std::cout << "ERROR INDEX AT REMOVE AT WAS OUT OF RANGE: " << index << std::endl;
+        return;
+    }
+
+    // special case if size is 1
+    if (_size == 1) {
+        delete head;
+        head = tail = nullptr;
+    }
+
+    // logic for remove at
+    Node* searchNode = head;
+    for (int i = 0; i < _size; ++i) {
+        if (i == index) {
+            Node* oldNext = searchNode->next;
+            Node* oldPrev = searchNode->prev;
+
+            if (oldNext != nullptr) {
+                oldNext->prev = oldPrev;
+            }
+            else {
+                tail = oldPrev;
+            }
+            if (oldPrev != nullptr) {
+                oldPrev->next = oldNext;
+            }
+            else {
+                head = oldNext;
+            }
+            
+            delete(searchNode);
+            break;
+        }
+        searchNode = searchNode->next;
+    }
+
+    _size--;
 }
 
 void ArrayAndLinkedList::SortList(ArrayAndLinkedList linkedlist,int begin, int end)

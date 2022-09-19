@@ -16,8 +16,10 @@ int main()
     arrLink.PrintLinkedList();
    std:: cout << "__" << arrLink.Size()<< std::endl;
    
-    arrLink.SortList(arrLink, 0, (arrLink.Size()) - 1);
-    arrLink.PrintLinkedList();
+    arrLink.SortList(arrLink, 0, (arrLink.Size() - 1));
+    std::cout << "List !!!!!" << std::endl;
+   
     
-    return 0;
+    return EXIT_SUCCESS;
+    system("exit");
 }

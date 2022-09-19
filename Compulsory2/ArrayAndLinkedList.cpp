@@ -111,17 +111,20 @@ void ArrayAndLinkedList::PopBack()
 
 }
 
-void ArrayAndLinkedList::SortList(ArrayAndLinkedList linkedlist,int begin, int end)
+void ArrayAndLinkedList::SortList(ArrayAndLinkedList &linkedlist,int begin, int end)
 {
-    if (begin >= end)
-        return;
+    if (begin>=end)
+    {
+        return; 
+    }
 
-    int middle = static_cast<int>(begin + end - begin / 2);
+    int middle = begin + (end-begin) / 2;
    
 
     SortList(linkedlist,  begin,  middle);
     SortList(linkedlist,  middle+1,  end);
     MergeList(linkedlist, begin, middle, end);
+    
 }
 
 
@@ -142,7 +145,7 @@ int& ArrayAndLinkedList::operator[](const int index)
 
 
 
-void ArrayAndLinkedList::MergeList(ArrayAndLinkedList linkedlist, int start, int middle, int end)
+void ArrayAndLinkedList::MergeList(ArrayAndLinkedList &linkedlist, int start, int middle, int end)
 {
     const int size_sub_list_1{ middle+1- start};
     const int size_sub_list_2{ end - middle};
@@ -191,4 +194,8 @@ void ArrayAndLinkedList::MergeList(ArrayAndLinkedList linkedlist, int start, int
         start_index_list_2++;
         start_index_merged_list++;
     }
+    
+   
+
+
 }

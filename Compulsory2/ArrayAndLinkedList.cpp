@@ -161,11 +161,9 @@ void ArrayAndLinkedList::SortList(ArrayAndLinkedList &linkedlist,int begin, int 
         return; 
     }
 
-<<<<<<< HEAD
+
     int middle = begin + (end-begin) / 2;
-=======
-    int middle = ((begin + end - begin) / 2);
->>>>>>> 89a01c2fb14aff8d7571542f84e68d2c7734c15e
+
    
 
     SortList(linkedlist,  begin,  middle);

@@ -116,7 +116,7 @@ void ArrayAndLinkedList::SortList(ArrayAndLinkedList linkedlist,int begin, int e
     if (begin >= end)
         return;
 
-    int middle = static_cast<int>(begin + end - begin / 2);
+    int middle = ((begin + end - begin) / 2);
    
 
     SortList(linkedlist,  begin,  middle);

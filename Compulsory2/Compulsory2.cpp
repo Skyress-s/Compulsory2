@@ -14,10 +14,10 @@ int main()
     arrLink.AddToHead(4);
     arrLink.AddToHead(5);
     arrLink.PrintLinkedList();
-   std:: cout << "__" << arrLink.Size()<< std::endl;
+    std:: cout << "_" << arrLink.Size()<< std::endl;
    
     arrLink.SortList(arrLink, 0, (arrLink.Size()) - 1);
-    arrLink.PrintLinkedList();
+    // arrLink.PrintLinkedList();
     
     return 0;
 }

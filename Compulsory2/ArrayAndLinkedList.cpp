@@ -13,7 +13,7 @@ void ArrayAndLinkedList::PopulateArrayRand(int min, int max)
 
 void ArrayAndLinkedList::TransferDataToLinkedList() {
     for (int i = 0; i < std::size(staticArray); ++i) { // 
-        AddToEnd(staticArray[i]);
+        AddToTail(staticArray[i]);
     }
 }
 
@@ -50,7 +50,7 @@ void ArrayAndLinkedList::PrintLinkedList()
     std::cout << "Number of elements in linked list: " << count << std::endl;
 }
 
-void ArrayAndLinkedList::AddToEnd(int data) {
+void ArrayAndLinkedList::AddToTail(int data) {
     // if size is zero
     Node* newNode = new Node(data);
     if (_size == 0) { // if size zero
@@ -109,7 +109,10 @@ int ArrayAndLinkedList::ReadFrom(int index, Node* N)
 
 void ArrayAndLinkedList::PopBack()
 {
-    
+    tail = tail->prev;
+    delete tail->next;
+    tail = nullptr;
+    _size--;
 }
 
 void ArrayAndLinkedList::RemoveAt(int index) {

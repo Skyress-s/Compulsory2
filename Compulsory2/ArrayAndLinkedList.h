@@ -26,7 +26,7 @@ public:
     
     // linked list functions
     void PrintLinkedList();
-    void AddToEnd(int data);
+    void AddToTail(int data);
     void AddToHead(int data);
     int Size(){ return _size; }
     Node* At(int index);

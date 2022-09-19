@@ -32,9 +32,12 @@ public:
     Node* At(int index);
     int ReadFrom(int index, Node* N);
     void PopBack();
+
+    void MergeList(ArrayAndLinkedList &linkedlist, int start, int middle, int end); //the type of the sorting is not decided yet. 
+    void SortList(ArrayAndLinkedList &linkedlist, int begin, int end); //DevideLinkedList can be removed depending on what sorting algorithm  we are going to use
+
     void RemoveAt(int index);
-    void MergeList(ArrayAndLinkedList linkedlist, int start, int middle, int end); //the type of the sorting is not decided yet. 
-    void SortList(ArrayAndLinkedList linkedlist, int begin, int end); //DevideLinkedList can be removed depending on what sorting algorithm  we are going to use
+
     //operator overloading
     int& operator [] (const int index);
     //copy constructor

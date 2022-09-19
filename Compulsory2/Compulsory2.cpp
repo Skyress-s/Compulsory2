@@ -5,10 +5,10 @@
 int main()
 {
     ArrayAndLinkedList arrLink;
-    // arrLink.PopulateArrayRand(0, 99);
-    // arrLink.PrintArray();
-    // arrLink.TransferDataToLinkedList();
-    // arrLink.PrintLinkedList();
+    arrLink.PopulateArrayRand(0, 99);
+    arrLink.PrintArray();
+    arrLink.TransferDataToLinkedList();
+    arrLink.PrintLinkedList();
 
     arrLink.AddToHead(3);
     arrLink.AddToHead(4);
@@ -17,8 +17,12 @@ int main()
     arrLink.PrintLinkedList();
     // std:: cout << "_" << arrLink.Size()<< std::endl;
    
-    // arrLink.SortList(arrLink, 0, (arrLink.Size()) - 1);
-    // arrLink.PrintLinkedList();
+
+    arrLink.SortList(arrLink, 0, (arrLink.Size() - 1));
+    std::cout << "List !!!!!" << std::endl;
+   
+
     
-    return 0;
+    return EXIT_SUCCESS;
+    system("exit");
 }

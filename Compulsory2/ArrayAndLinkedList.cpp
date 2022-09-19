@@ -100,6 +100,11 @@ Node* ArrayAndLinkedList::At(int index) {
     return searchNode;
 }
 
+int ArrayAndLinkedList::ReadFrom(int index, Node* N)
+{
+    return N->data;
+}
+
 
 void ArrayAndLinkedList::PopBack()
 {
@@ -111,7 +116,7 @@ void ArrayAndLinkedList::SortList(ArrayAndLinkedList linkedlist,int begin, int e
     if (begin >= end)
         return;
 
-    int middle = (begin + (end - begin)) / 2;
+    int middle = static_cast<int>(begin + end - begin / 2);
    
 
     SortList(linkedlist,  begin,  middle);
@@ -140,17 +145,18 @@ int& ArrayAndLinkedList::operator[](const int index)
 void ArrayAndLinkedList::MergeList(ArrayAndLinkedList linkedlist, int start, int middle, int end)
 {
     const int size_sub_list_1{ middle+1- start};
-    const int size_sub_list_2{ middle - start};
+    const int size_sub_list_2{ end - middle};
 
     ArrayAndLinkedList* linked_list_1 = new ArrayAndLinkedList[size_sub_list_1];
     ArrayAndLinkedList* linked_list_2 = new ArrayAndLinkedList[size_sub_list_2];
 
     //copy data from the main linked list to the sublists
     for(int i{}; i < size_sub_list_1; i++) {
-        linked_list_1[i] = linked_list_1[start+i]; //copying starts from "start" for the first sublink
+        linked_list_1->AddToHead(linkedlist.At(start+i)->data); //copying starts from "start" for the first sublink
+      
     }
     for(int i{}; i < size_sub_list_2; i++ ) {
-        linked_list_2[i] = linked_list_2[(middle+1) + i];
+        linked_list_2->AddToHead(linkedlist.At(middle + i+1)->data);
     }
 
     int start_index_list_1{ 0 };
@@ -159,9 +165,30 @@ void ArrayAndLinkedList::MergeList(ArrayAndLinkedList linkedlist, int start, int
 
     do {
         if (linked_list_1->At(start_index_list_1) < linked_list_2->At(start_index_list_2)) {
-            linkedlist[start_index_merged_list] = linked_list_1->At(start_index_list_1);
+            linkedlist.At(start_index_merged_list)->data = linked_list_1->At(start_index_list_1)->data;
+            start_index_list_1++;
         }
-
+        else  {
+            linkedlist.At(start_index_merged_list)->data = linked_list_2->At(start_index_list_2)->data;
+            start_index_list_2++;
+        }
+        start_index_merged_list++;
     } while (start_index_list_1 < size_sub_list_1
         && start_index_list_2 < size_sub_list_2);
+
+    while (start_index_list_1 < size_sub_list_1) {
+        linkedlist.At(start_index_merged_list)->data = linked_list_1->At(start_index_list_1)->data;
+        start_index_list_1++;
+        start_index_merged_list++;
+    }
+    while (start_index_list_1 < size_sub_list_1) {
+        linkedlist.At(start_index_merged_list)->data = linked_list_1->At(start_index_list_1)->data;
+        start_index_list_1++;
+        start_index_merged_list++;
+    }
+    while (start_index_list_2 < size_sub_list_2) {
+        linkedlist.At(start_index_merged_list)->data = linked_list_2->At(start_index_list_2)->data;
+        start_index_list_2++;
+        start_index_merged_list++;
+    }
 }

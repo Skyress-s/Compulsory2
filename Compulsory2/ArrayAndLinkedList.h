@@ -28,6 +28,7 @@ public:
     void PrintLinkedList();
     void AddToTail(int data);
     void AddToHead(int data);
+    void InsertAt (int data, int index);
     int Size(){ return _size; }
     Node* At(int index);
     int ReadFrom(int index, Node* N);

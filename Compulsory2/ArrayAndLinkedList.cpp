@@ -83,6 +83,41 @@ void ArrayAndLinkedList::AddToHead(int data)
     head = newNode;
 }
 
+void ArrayAndLinkedList::InsertAt(int data, int index)
+{
+    Node* newNode = new Node(data);
+    Node* tmp = head;
+    int count = 1;
+
+    if (index == 0)
+    {
+        newNode->next = head;
+        head->prev = newNode;
+        _size++;
+        head = newNode;
+        return;
+    }
+    while (count < index)
+    {
+        if (tmp->next != nullptr)
+            tmp = tmp->next;
+        else
+        {
+            std::cout << "Given index was out of range" << std::endl;
+            return;
+        }
+        count++;
+    }
+    Node* tmp2 = tmp->next;
+    tmp->next = newNode;
+    newNode->prev = tmp;
+    newNode->next = tmp2;
+    tmp2->prev = newNode;
+
+    std::cout << "Node created at index " << index << " with data: " << data << std::endl;
+    _size++;
+}
+
 /**
  * \brief 
  * \param index finds and returns element of index, return nullptr if out of range

@@ -282,3 +282,24 @@ void ArrayAndLinkedList::MergeList(ArrayAndLinkedList &linkedlist, int start, in
 
 
 }
+
+void ArrayAndLinkedList::BubbleSort(ArrayAndLinkedList& linkedlist, int size_list)
+{
+    int i{};
+    int j{};
+    for (i = 0; i < size_list; i++) {
+        for (j = 0; j < size_list - 1; j++) {
+            if (linkedlist[j] > linkedlist[j + 1]) {
+                swap_n(linkedlist.At(j), linkedlist.At(j + 1));
+            }
+        }
+    }
+}
+
+void ArrayAndLinkedList::swap_n(Node* a, Node* b)
+{
+    Node* temp = new Node(0);
+    temp->data = a->data;
+    a->data = b->data;
+    b->data = temp->data;
+}

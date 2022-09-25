@@ -303,3 +303,18 @@ void ArrayAndLinkedList::swap_n(Node* a, Node* b)
     a->data = b->data;
     b->data = temp->data;
 }
+
+void ArrayAndLinkedList::SelectionSort(ArrayAndLinkedList& list, int size_n)
+{
+    int i{ 0 }, j{ 0 }, min_elem{};
+    for (i = 0; i < size_n; i++) {
+        min_elem = i;
+        for (j = i+1; j < size_n; j++) {
+            if (list[min_elem] > list[j]) 
+            min_elem = j;
+            
+        }
+        if(min_elem!=i)
+        swap_n(list.At(min_elem), list.At(i));
+    }
+}

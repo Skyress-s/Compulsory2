@@ -38,6 +38,7 @@ public:
     void SortList(ArrayAndLinkedList &linkedlist, int begin, int end); //DevideLinkedList can be removed depending on what sorting algorithm  we are going to use
     void BubbleSort(ArrayAndLinkedList& linkedlist, int size_list);
     void swap_n(Node* a, Node* b);
+    void SelectionSort(ArrayAndLinkedList& list, int size_n);
     void RemoveAt(int index);
 
     //operator overloading
